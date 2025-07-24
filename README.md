@@ -96,3 +96,10 @@ Added this line
 ```
 127.0.0.1   alloi.local
 ```
+
+
+
+
+# Step 6: Configure values.yaml
+Edit ./alloi-stack/values.yaml with your settings:
+<img width="968" height="377" alt="image" src="https://github.com/user-attachments/assets/97aaecd6-5811-45c6-8f19-3571e75be130" />
