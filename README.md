@@ -25,4 +25,7 @@ kubectl wait --for=condition=ready pod -l app.kubernetes.io/name=ingress-nginx -
 ```
 kubectl get pods -n cert-manager
 ```
-<img width="1452" height="276" alt="image" src="https://github.com/user-attachments/assets/f8669b10-e836-487c-aff3-f44a0fd34b46" />
+```
+kubectl get pods -n ingress-nginx
+```
+<img width="924" height="288" alt="image" src="https://github.com/user-attachments/assets/6a4e0337-4dcd-4aba-ad6e-fa2708b51de5" />
