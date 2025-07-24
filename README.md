@@ -72,3 +72,27 @@ GRANT ALL PRIVILEGES ON DATABASE "alloi-supertokens" TO supertokens_user;
 GRANT ALL PRIVILEGES ON DATABASE "alloi-backend" TO backend_user;
 ```
 <img width="608" height="192" alt="image" src="https://github.com/user-attachments/assets/d2a6e80f-3f09-4f85-8fae-b0977b81ffa4" />
+
+# Step 4: Clone and Prepare Alloi Charts
+
+### Clone the repository
+git clone https://github.com/opshealth/alloi-public-charts.git
+cd alloi-public-charts
+### Update chart dependencies
+helm dependency update ./alloi-stack
+### Create namespace
+kubectl create namespace alloi
+
+# Step 5: Configure DNS
+# Get your load balancer IP/hostname
+kubectl get svc -n ingress-nginx ingress-nginx-controller
+
+# Point your domain to the load balancer
+# Create DNS A record: alloi.yourdomain.com -> [LOAD_BALANCER_IP]
+```
+sudo nano /etc/hosts
+```
+Added this line
+```
+127.0.0.1   alloi.local
+```
