@@ -29,3 +29,24 @@ kubectl get pods -n cert-manager
 kubectl get pods -n ingress-nginx
 ```
 <img width="924" height="288" alt="image" src="https://github.com/user-attachments/assets/6a4e0337-4dcd-4aba-ad6e-fa2708b51de5" />
+
+# Step 2: Create SSL Certificate Issuer
+```
+cat << EOF | kubectl apply -f -
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: letsencrypt-prod
+spec:
+  acme:
+    server: https://acme-v02.api.letsencrypt.org/directory
+    email: shyamsrikar@alloi.ai  
+    privateKeySecretRef:
+      name: letsencrypt-prod
+    solvers:
+    - http01:
+        ingress:
+          class: nginx
+EOF
+```
+<img width="1135" height="405" alt="image" src="https://github.com/user-attachments/assets/0e8b6413-f1b1-43bb-8093-0bbeb1c04fd9" />
