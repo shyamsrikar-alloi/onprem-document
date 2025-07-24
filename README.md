@@ -50,3 +50,25 @@ spec:
 EOF
 ```
 <img width="1135" height="405" alt="image" src="https://github.com/user-attachments/assets/0e8b6413-f1b1-43bb-8093-0bbeb1c04fd9" />
+
+# Step 3: Set Up PostgreSQL Databases
+### Connect to your PostgreSQL instance and create the required databases:
+
+```
+-- Create databases
+CREATE DATABASE "alloi-embeddings";
+CREATE DATABASE "alloi-jackson";
+CREATE DATABASE "alloi-supertokens";
+CREATE DATABASE "alloi-backend";
+-- Create users
+CREATE USER embeddings_user WITH PASSWORD 'secure_password_1';
+CREATE USER jackson_user WITH PASSWORD 'secure_password_2';
+CREATE USER supertokens_user WITH PASSWORD 'secure_password_3';
+CREATE USER backend_user WITH PASSWORD 'secure_password_4';
+-- Grant permissions
+GRANT ALL PRIVILEGES ON DATABASE "alloi-embeddings" TO embeddings_user;
+GRANT ALL PRIVILEGES ON DATABASE "alloi-jackson" TO jackson_user;
+GRANT ALL PRIVILEGES ON DATABASE "alloi-supertokens" TO supertokens_user;
+GRANT ALL PRIVILEGES ON DATABASE "alloi-backend" TO backend_user;
+```
+<img width="608" height="192" alt="image" src="https://github.com/user-attachments/assets/d2a6e80f-3f09-4f85-8fae-b0977b81ffa4" />
