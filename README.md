@@ -15,7 +15,7 @@ kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/
 ``` 
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.8.2/deploy/static/provider/cloud/deploy.yaml 
 ```
-# Wait for services to be ready
+### Wait for services to be ready
 ``` 
 kubectl wait --for=condition=available --timeout=300s deployment -n cert-manager --all 
 ```
