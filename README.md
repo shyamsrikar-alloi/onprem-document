@@ -102,4 +102,5 @@ Added this line
 
 # Step 6: Configure values.yaml
 Edit ./alloi-stack/values.yaml with your settings:
-<img width="968" height="377" alt="image" src="https://github.com/user-attachments/assets/97aaecd6-5811-45c6-8f19-3571e75be130" />
+
+<img width="1764" height="865" alt="image" src="https://github.com/user-attachments/assets/984cb07c-3e3f-4283-878f-d146e1d768ca" />
