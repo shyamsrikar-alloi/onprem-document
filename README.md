@@ -7,11 +7,11 @@ git clone --branch INFRA-11-restructure-alloi-stack-and-dependencies https://git
 - password: (token-classic)
 # Step 1: Install Dependencies
 
-# Install cert-manager for SSL certificates
+### Install cert-manager for SSL certificates
 ```
 kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.12.0/cert-manager.yaml 
 ```
-# Install NGINX ingress controller
+### Install NGINX ingress controller
 ``` 
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.8.2/deploy/static/provider/cloud/deploy.yaml 
 ```
