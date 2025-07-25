@@ -18,6 +18,7 @@ kubectl wait --for=condition=available --timeout=300s deployment -n cert-manager
 ``` 
 kubectl wait --for=condition=ready pod -l app.kubernetes.io/name=ingress-nginx -n ingress-nginx --timeout=300s 
 ```
+- Verify the pods 
 ```
 kubectl get pods -n cert-manager
 ```
