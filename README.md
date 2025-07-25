@@ -79,7 +79,6 @@ GRANT ALL PRIVILEGES ON DATABASE "alloi-backend" TO backend_user;
 
 Clone the repository
 ```
-# git clone https://github.com/opshealth/alloi-public-charts.git
 git clone --branch INFRA-11-restructure-alloi-stack-and-dependencies https://github.com/opshealth/alloi-public-charts.git
 ```
 Enter the username and classic-token
