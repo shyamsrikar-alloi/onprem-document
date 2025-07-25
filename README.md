@@ -1,7 +1,7 @@
 # Onprem-Document Performed-Tests
 Followed this Guide (Alloi On-Premises Deployment - Simple Setup Guide)
 
-# Step 1: Install Dependencies
+### Step 1: Install Dependencies
 
 Install cert-manager for SSL certificates
 ```
@@ -27,7 +27,7 @@ kubectl get pods -n ingress-nginx
 ```
 <img width="924" height="288" alt="image" src="https://github.com/user-attachments/assets/6a4e0337-4dcd-4aba-ad6e-fa2708b51de5" />
 
-# Step 2: Create SSL Certificate Issuer
+### Step 2: Create SSL Certificate Issuer
 Directly runned the below command by modifying email in the script
 ```
 cat << EOF | kubectl apply -f -
@@ -49,7 +49,7 @@ EOF
 ```
 <img width="1135" height="405" alt="image" src="https://github.com/user-attachments/assets/0e8b6413-f1b1-43bb-8093-0bbeb1c04fd9" />
 
-# Step 3: Set Up PostgreSQL Databases
+### Step 3: Set Up PostgreSQL Databases
 - Connect to your PostgreSQL instance and create the required databases:
 
 ```
@@ -74,7 +74,7 @@ GRANT ALL PRIVILEGES ON DATABASE "alloi-supertokens" TO supertokens_user;
 GRANT ALL PRIVILEGES ON DATABASE "alloi-backend" TO backend_user;
 ```
 
-# Step 4: Clone and Prepare Alloi Charts
+### Step 4: Clone and Prepare Alloi Charts
 
 Clone the repository
 ```
@@ -97,7 +97,7 @@ Create namespace
 kubectl create namespace alloi
 ```
 
-# Step 5: Configure DNS
+### Step 5: Configure DNS
 Get your load balancer IP/hostname
 ```
 kubectl get svc -n ingress-nginx ingress-nginx-controller
@@ -115,7 +115,7 @@ Added this line at the end of the data already present in this path
 127.0.0.1   alloi.localhost
 ```
 
-# Step 6: Configure values.yaml
+### Step 6: Configure values.yaml
 Edit ./alloi-stack/values.yaml with your settings:
 ```
 global:
@@ -129,7 +129,7 @@ global:
 ```
 <img width="1853" height="788" alt="image" src="https://github.com/user-attachments/assets/7a055640-4b38-4f63-951d-868ba22bb592" />
 
-# Step 7: Configure Secrets
+### Step 7: Configure Secrets
 Edit ./alloi-stack/values-secrets.yaml with your credentials:
 ```
 DATABASE_NAME: "alloi-backend"
@@ -138,7 +138,7 @@ DATABASE_PASSWORD: "secure_password_4"
 ```
 <img width="1852" height="999" alt="image" src="https://github.com/user-attachments/assets/e43f8bc2-8b12-4f3f-9102-269dd310f499" />
 
-# Generate secure keys:
+### Generate secure keys:
 ```
 # Django secret key
 python3 -c "import secrets; print(secrets.token_urlsafe(50))"
@@ -148,7 +148,7 @@ python3 -c "from cryptography.fernet import Fernet; print(Fernet.generate_key().
 ```
 <img width="1853" height="203" alt="image" src="https://github.com/user-attachments/assets/7c3377bf-db54-4dbb-a2c9-115ec8b970bb" />
 
-# Step 8: Deploy Alloi
+### Step 8: Deploy Alloi
 Deploy using Helm
 ```
 helm install alloi ./alloi-stack -n alloi \
