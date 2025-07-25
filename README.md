@@ -75,6 +75,7 @@ GRANT ALL PRIVILEGES ON DATABASE "alloi-backend" TO backend_user;
 ```
 
 ### Step 4: Clone and Prepare Alloi Charts
+- git clone https://github.com/opshealth/alloi-public-charts.git
 
 Clone the repository
 ```
