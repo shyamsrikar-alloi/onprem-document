@@ -75,7 +75,6 @@ GRANT ALL PRIVILEGES ON DATABASE "alloi-jackson" TO jackson_user;
 GRANT ALL PRIVILEGES ON DATABASE "alloi-supertokens" TO supertokens_user;
 GRANT ALL PRIVILEGES ON DATABASE "alloi-backend" TO backend_user;
 ```
-<img width="608" height="192" alt="image" src="https://github.com/user-attachments/assets/d2a6e80f-3f09-4f85-8fae-b0977b81ffa4" />
 
 # Step 4: Clone and Prepare Alloi Charts
 
