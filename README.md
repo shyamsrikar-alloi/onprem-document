@@ -3,22 +3,22 @@ Followed this Guide (Alloi On-Premises Deployment - Simple Setup Guide)
 
 # Step 1: Install Dependencies
 
-- Install cert-manager for SSL certificates
+Install cert-manager for SSL certificates
 ```
 kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.12.0/cert-manager.yaml 
 ```
-- Install NGINX ingress controller
+Install NGINX ingress controller
 ``` 
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.8.2/deploy/static/provider/cloud/deploy.yaml 
 ```
-- Wait for services to be ready
+Wait for services to be ready
 ``` 
 kubectl wait --for=condition=available --timeout=300s deployment -n cert-manager --all 
 ```
 ``` 
 kubectl wait --for=condition=ready pod -l app.kubernetes.io/name=ingress-nginx -n ingress-nginx --timeout=300s 
 ```
-- Verify the pods 
+Verify the pods 
 ```
 kubectl get pods -n cert-manager
 ```
@@ -28,6 +28,7 @@ kubectl get pods -n ingress-nginx
 <img width="924" height="288" alt="image" src="https://github.com/user-attachments/assets/6a4e0337-4dcd-4aba-ad6e-fa2708b51de5" />
 
 # Step 2: Create SSL Certificate Issuer
+Directly runned the below command by modifying email in the script
 ```
 cat << EOF | kubectl apply -f -
 apiVersion: cert-manager.io/v1
@@ -49,7 +50,7 @@ EOF
 <img width="1135" height="405" alt="image" src="https://github.com/user-attachments/assets/0e8b6413-f1b1-43bb-8093-0bbeb1c04fd9" />
 
 # Step 3: Set Up PostgreSQL Databases
-### Connect to your PostgreSQL instance and create the required databases:
+- Connect to your PostgreSQL instance and create the required databases:
 
 ```
 -- Create databases
@@ -75,7 +76,7 @@ GRANT ALL PRIVILEGES ON DATABASE "alloi-backend" TO backend_user;
 
 # Step 4: Clone and Prepare Alloi Charts
 
-- Clone the repository
+Clone the repository
 ```
 # git clone https://github.com/opshealth/alloi-public-charts.git
 git clone --branch INFRA-11-restructure-alloi-stack-and-dependencies https://github.com/opshealth/alloi-public-charts.git
@@ -87,35 +88,32 @@ Enter the username and classic-token
 ```
 cd alloi-public-charts
 ```
-- Update chart dependencies
+Update chart dependencies
 ```
 helm dependency update ./alloi-stack
 ```
-- Create namespace
+Create namespace
 ```
 kubectl create namespace alloi
 ```
 
 # Step 5: Configure DNS
-- Get your load balancer IP/hostname
+Get your load balancer IP/hostname
 ```
 kubectl get svc -n ingress-nginx ingress-nginx-controller
 ```
 
-- Point your domain to the load balancer
-- Create DNS A record: alloi.yourdomain.com -> [LOAD_BALANCER_IP]
+Point your domain to the load balancer
+Create DNS A record: alloi.yourdomain.com -> [LOAD_BALANCER_IP]
 - I am using my localhost instead od domain so that i have modified the below path
 ```
 sudo nano /etc/hosts
 ```
-- Added this line
+Added this line at the end of the data already present in this path
 
 ```
 127.0.0.1   alloi.localhost
 ```
-
-
-
 
 # Step 6: Configure values.yaml
 Edit ./alloi-stack/values.yaml with your settings:
@@ -149,11 +147,12 @@ python3 -c "import secrets; print(secrets.token_urlsafe(50))"
 python3 -c "from cryptography.fernet import Fernet; print(Fernet.generate_key().decode())"
 ```
 # Step 8: Deploy Alloi
-- Deploy using Helm
+Deploy using Helm
+```
 helm install alloi ./alloi-stack -n alloi \
   -f ./alloi-stack/values.yaml \
   -f ./alloi-stack/values-secrets-template.yaml
-
+```
 - Monitor deployment (wait for all pods to be Running)
 ```
 kubectl get pods -n alloi -w
