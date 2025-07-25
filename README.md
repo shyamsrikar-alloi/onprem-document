@@ -138,3 +138,23 @@ DATABASE_USER: "backend_user"
 DATABASE_PASSWORD: "secure_password_4"
 ```
 <img width="1852" height="999" alt="image" src="https://github.com/user-attachments/assets/e43f8bc2-8b12-4f3f-9102-269dd310f499" />
+
+# Generate secure keys:
+```
+# Django secret key
+python3 -c "import secrets; print(secrets.token_urlsafe(50))"
+
+# Cryptography key
+python3 -c "from cryptography.fernet import Fernet; print(Fernet.generate_key().decode())"
+```
+# Step 8: Deploy Alloi
+- Deploy using Helm
+helm install alloi ./alloi-stack -n alloi \
+  -f ./alloi-stack/values.yaml \
+  -f ./alloi-stack/values-secrets-template.yaml
+
+- Monitor deployment (wait for all pods to be Running)
+```
+kubectl get pods -n alloi -w
+```
+<img width="1843" height="982" alt="image" src="https://github.com/user-attachments/assets/09e789b1-ffd8-4d97-bc51-e05f2f03eb91" />
