@@ -60,11 +60,15 @@ CREATE DATABASE "alloi-embeddings";
 CREATE DATABASE "alloi-jackson";
 CREATE DATABASE "alloi-supertokens";
 CREATE DATABASE "alloi-backend";
+```
+```
 -- Create users
 CREATE USER embeddings_user WITH PASSWORD 'secure_password_1';
 CREATE USER jackson_user WITH PASSWORD 'secure_password_2';
 CREATE USER supertokens_user WITH PASSWORD 'secure_password_3';
 CREATE USER backend_user WITH PASSWORD 'secure_password_4';
+```
+```
 -- Grant permissions
 GRANT ALL PRIVILEGES ON DATABASE "alloi-embeddings" TO embeddings_user;
 GRANT ALL PRIVILEGES ON DATABASE "alloi-jackson" TO jackson_user;
@@ -75,26 +79,38 @@ GRANT ALL PRIVILEGES ON DATABASE "alloi-backend" TO backend_user;
 
 # Step 4: Clone and Prepare Alloi Charts
 
-### Clone the repository
-git clone https://github.com/opshealth/alloi-public-charts.git
+- Clone the repository
+```
+# git clone https://github.com/opshealth/alloi-public-charts.git
+git clone --branch INFRA-11-restructure-alloi-stack-and-dependencies https://github.com/opshealth/alloi-public-charts.git
+```
+```
 cd alloi-public-charts
-### Update chart dependencies
+```
+- Update chart dependencies
+```
 helm dependency update ./alloi-stack
-### Create namespace
+```
+- Create namespace
+```
 kubectl create namespace alloi
+```
 
 # Step 5: Configure DNS
-# Get your load balancer IP/hostname
+- Get your load balancer IP/hostname
+```
 kubectl get svc -n ingress-nginx ingress-nginx-controller
+```
 
-# Point your domain to the load balancer
-# Create DNS A record: alloi.yourdomain.com -> [LOAD_BALANCER_IP]
+- Point your domain to the load balancer
+- Create DNS A record: alloi.yourdomain.com -> [LOAD_BALANCER_IP]
 ```
 sudo nano /etc/hosts
 ```
-Added this line
+- Added this line
+
 ```
-127.0.0.1   alloi.local
+127.0.0.1   alloi.localhost
 ```
 
 
