@@ -1,10 +1,6 @@
 # Onprem-Document Performed-Tests
-## Cloned in to the particular repo
-```
-git clone --branch INFRA-11-restructure-alloi-stack-and-dependencies https://github.com/opshealth/alloi-public-charts.git
-```
-- username: shyamsrikar-alloi
-- password: (token-classic)
+Followed this Guide (Alloi On-Premises Deployment - Simple Setup Guide)
+
 # Step 1: Install Dependencies
 
 - Install cert-manager for SSL certificates
@@ -83,6 +79,10 @@ GRANT ALL PRIVILEGES ON DATABASE "alloi-backend" TO backend_user;
 # git clone https://github.com/opshealth/alloi-public-charts.git
 git clone --branch INFRA-11-restructure-alloi-stack-and-dependencies https://github.com/opshealth/alloi-public-charts.git
 ```
+Enter the username and classic-token
+- username: shyamsrikar-alloi
+- password: (token-classic)
+
 ```
 cd alloi-public-charts
 ```
