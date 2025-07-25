@@ -117,5 +117,23 @@ sudo nano /etc/hosts
 
 # Step 6: Configure values.yaml
 Edit ./alloi-stack/values.yaml with your settings:
+```
+global:
+  domain: alloi.localhost
+  hostname: localhost
+  storage_class: "standard"
+  s3_bucket: "local-bucket"
+  aws_region: ap-south-1
+  database_host: "database-1.c3k6ao6mq5h0.ap-south-1.rds.amazonaws.com"
+  database_port: "5432"
+```
+<img width="1853" height="788" alt="image" src="https://github.com/user-attachments/assets/7a055640-4b38-4f63-951d-868ba22bb592" />
 
-<img width="1764" height="865" alt="image" src="https://github.com/user-attachments/assets/984cb07c-3e3f-4283-878f-d146e1d768ca" />
+# Step 7: Configure Secrets
+Edit ./alloi-stack/values-secrets.yaml with your credentials:
+```
+DATABASE_NAME: "alloi-backend"
+DATABASE_USER: "backend_user"
+DATABASE_PASSWORD: "secure_password_4"
+```
+<img width="1852" height="999" alt="image" src="https://github.com/user-attachments/assets/e43f8bc2-8b12-4f3f-9102-269dd310f499" />
