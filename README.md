@@ -146,6 +146,8 @@ python3 -c "import secrets; print(secrets.token_urlsafe(50))"
 # Cryptography key
 python3 -c "from cryptography.fernet import Fernet; print(Fernet.generate_key().decode())"
 ```
+<img width="1853" height="203" alt="image" src="https://github.com/user-attachments/assets/7c3377bf-db54-4dbb-a2c9-115ec8b970bb" />
+
 # Step 8: Deploy Alloi
 Deploy using Helm
 ```
