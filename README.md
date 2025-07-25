@@ -103,6 +103,7 @@ kubectl get svc -n ingress-nginx ingress-nginx-controller
 
 - Point your domain to the load balancer
 - Create DNS A record: alloi.yourdomain.com -> [LOAD_BALANCER_IP]
+- I am using my localhost instead od domain so that i have modified the below path
 ```
 sudo nano /etc/hosts
 ```
